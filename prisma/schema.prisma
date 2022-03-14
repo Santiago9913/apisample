@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model Movies {
+  id  Int  @id @default(autoincrement())
+  name String @db.VarChar(255)
+}
+
+model User {
+  id        Int  @id @default(autoincrement())
+  username  String @db.VarChar(255) @unique
+  role      String @db.VarChar(255)
+}
+
